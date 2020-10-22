@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Abraham Purnomo",
+    "username": "abraham-sys",
+    "password": "brastagi12",
+    "email": "notnull@gmail.com",
+    "role": "member"
+  },
+  {
+    "name": "Adi Nugroho",
+    "username": "athunkadi",
+    "password": "blastit990",
+    "email": "notfalse@gmail.com",
+    "role": "admin"
+  },
+  {
+    "name": "Yusuf Chausin",
+    "username": "callmeysf",
+    "password": "yestoysf",
+    "email": "isequal@gmail.com",
+    "role": "member"
+  }
+]

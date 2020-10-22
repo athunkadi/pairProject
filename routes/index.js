@@ -1,11 +1,77 @@
-const Controller = require('../controllers/controller');
-const routerGame = require('./game');
-const routerUser = require('./user');
+const routerGame = require("./game");
+const routerUser = require("./user");
+const router = require("express").Router();
+const session = require("express-session");
+const { User } = require("../models");
 
-const router = require('express').Router();
+router.use(
+  session({
+    secret: "nyanyikanlagunya",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {},
+  })
+);
 
-router.get('/', Controller.index);
-router.use('/games', routerGame);
-router.use('/users', routerUser);
+const middleBridge = (req, res, next) => {
+  next();
+};
+
+router.get("/", middleBridge, (req, res) => {
+  if (req.session.isLoggedIn === true) {
+    res.render("home", {
+      username: req.session.username,
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.get("/login", (req, res) => {
+  if (req.query.err) {
+    res.render("login", {
+      errorLogin: true,
+    });
+  } else {
+    res.render("login", {
+      errorLogin: false,
+    });
+  }
+});
+
+router.post("/login", (req, res) => {
+  User.findOne({
+    where: {
+      username: req.body.username,
+      password: req.body.password,
+    },
+  })
+    .then((data) => {
+      if (data === null) {
+        res.redirect("/login?err=true");
+      } else {
+        req.session.isLoggedIn = true;
+        req.session.username = data.username;
+
+        res.redirect("/");
+      }
+    })
+    .catch((err) => {
+      res.send(err.message);
+    });
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      res.send(err.message);
+    } else {
+      res.redirect("/login");
+    }
+  });
+});
+
+router.use("/games", routerGame);
+router.use("/users", routerUser);
 
 module.exports = router;

@@ -1,17 +1,17 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addConstraint('Orders', {
-      fields : ['GameId'],
-      type : 'foreign key',
-      name : 'fkey_GameId',
-      references : {
-        table: 'Games',
-        field: 'id'
+    return queryInterface.addConstraint("Orders", {
+      fields: ["GameId"],
+      type: "foreign key",
+      name: "fkey_GameId",
+      references: {
+        table: "Games",
+        field: "id",
       },
-      onDelete: 'cascade',
-      onUpdate: 'cascade'
+      onDelete: "cascade",
+      onUpdate: "cascade",
     });
     /**
      * Add altering commands here.
@@ -22,12 +22,12 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.removeConstraint('Orders', 'fkey_UserId');
+    return queryInterface.removeConstraint("Orders", "fkey_GameId");
     /**
      * Add reverting commands here.
      *
      * Example:
      * await queryInterface.dropTable('users');
      */
-  }
+  },
 };
