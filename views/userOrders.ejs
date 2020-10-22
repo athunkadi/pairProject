@@ -27,27 +27,27 @@
     <tbody>
       <% data.forEach((game, index) => { %>
       <tr>
-        <td><img src="<%= game.image  %>" alt="" /></td>
-        <td><%= game.name %></td>
-        <td><%= game.stock %></td>
-        <td><%= Helper.toRupiahs(game.price) %></td>
-        <td><%= game.serial_code %></td>
+        <td><img src="<%= data.image  %>" alt="" /></td>
+        <td><%= data.name %></td>
+        <td><%= data.stock %></td>
+        <td><%= Helper.toRupiahs(data.price) %></td>
+        <td><%= data.serial_code %></td>
         <td>
-          <a href="/games/<%= game.id %>/edit" class="btn btn-primary btn-sm"
+          <a href="/games/<%= data.id %>/edit" class="btn btn-primary btn-sm"
             >edit</a
           >
           |
           <a
-            href="/games/<%= game.id %>/delete"
+            href="/games/<%= data.id %>/delete"
             class="btn btn-primary btn-sm"
-            onclick="alert('Hapus game ini?')"
+            onclick="alert('Hapus data ini?')"
             >delete</a
           >
           |
           <a
-            href="/games/<%= game.id %>/buy"
+            href="/games/<%= data.id %>/buy"
             class="btn btn-primary btn-sm"
-            onclick="alert('Beli game ini ?')"
+            onclick="alert('Beli data ini ?')"
             >Buy</a
           >
         </td>

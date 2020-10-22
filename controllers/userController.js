@@ -86,9 +86,10 @@ class UserController {
   }
 
   static showOrders(req, res) {
-    const id = +req.params.id;
+    const userId = +req.params.id;
 
-    User.findByPk(id, {
+    //Failed di show Game
+    User.findByPk(userId, {
       include: Game,
     })
       .then((data) => {

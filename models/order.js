@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
     /**
@@ -14,13 +12,16 @@ module.exports = (sequelize, DataTypes) => {
       Order.belongsTo(models.User);
       Order.belongsTo(models.Game);
     }
-  };
-  Order.init({
-    UserId: DataTypes.INTEGER,
-    GameId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Order',
-  });
+  }
+  Order.init(
+    {
+      UserId: DataTypes.INTEGER,
+      GameId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: "Order",
+    }
+  );
   return Order;
 };
