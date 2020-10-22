@@ -1,0 +1,37 @@
+[
+  {
+    "name": "The Witcher 3",
+    "stock": 15,
+    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Witcher_3_cover_art.jpg/220px-Witcher_3_cover_art.jpg",
+    "price": 230000,
+    "serial_code": "xc12jk34cj"
+  },
+  {
+    "name": "Far Cry 3",
+    "stock": 5,
+    "image": "https://upload.wikimedia.org/wikipedia/en/c/c6/Far_Cry_3_PAL_box_art.jpg",
+    "price": 320000,
+    "serial_code": "zx73gc46ji"
+  },
+  {
+    "name": "Fallout 4",
+    "stock": 11,
+    "image": "https://ecs7.tokopedia.net/img/cache/700/product-1/2020/6/22/6108470/6108470_d0009e8d-115b-4229-82c2-6fd77ec5ee0a_432_432",
+    "price": 290000,
+    "serial_code": "ab12ij77lo"
+  },
+  {
+    "name": "Assassins Creed Odyssey",
+    "stock": 3,
+    "image": "https://upload.wikimedia.org/wikipedia/en/9/99/ACOdysseyCoverArt.png",
+    "price": 455000,
+    "serial_code": "ge50lo10si"
+  },
+  {
+    "name": "Dragon's Dogma",
+    "stock": 21,
+    "image": "https://upload.wikimedia.org/wikipedia/en/6/6c/DragonsDogma.jpg",
+    "price": 139000,
+    "serial_code": "ch87op43ts"
+  }
+]
