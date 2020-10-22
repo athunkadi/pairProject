@@ -1,0 +1,65 @@
+<%- include("partials/head", { tittle: "Popular Games"}); -%>
+
+<div class="container">
+  <canvas id="chart"> </canvas>
+</div>
+<script>
+  let chart = document.getElementById("chart").getContext("2d");
+  let gameChart = new Chart(chart, {
+    type: "bar",
+    data: {
+      labels: [
+        "Minecraft",
+        "Grand Theft Auto V",
+        "Tetris",
+        "PUBG",
+        "RDR 2",
+        "COD: Modern Warfare",
+        "Diablo III",
+        "The Witcher III",
+        "Borderlands 2",
+        "The Last of Us",
+      ],
+      datasets: [
+        {
+          label: "Sales",
+          data: [
+            200000000,
+            135000000,
+            100000000,
+            70000000,
+            32000000,
+            30000000,
+            30000000,
+            28000000,
+            22000000,
+            20000000,
+          ],
+          backgroundColor: [
+            `#1AA210`,
+            "#FB76C1",
+            "#07C8F9",
+            "#FAAE7B",
+            "#e63946",
+            "#f77f00",
+            "#ffc6ff",
+            "#e5989b",
+            "#05668d",
+            "#00a896",
+          ],
+          borderWidth: 1,
+          borderColor: "#14213d",
+          hoverBorderWidth: 3,
+          hoverBorderColor: "black",
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Top 10 Most Popular Game",
+      },
+    },
+  });
+</script>
+<%- include("partials/foot"); -%>

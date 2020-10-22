@@ -101,6 +101,14 @@ class GameController {
         res.send(err.message);
       });
   }
+
+  static popularGame(req, res) {
+    res.render("popularGame");
+  }
+
+  static hardGame(req, res) {
+    res.render("hardGame");
+  }
 }
 
 module.exports = GameController;
