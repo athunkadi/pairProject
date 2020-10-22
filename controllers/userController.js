@@ -1,9 +1,14 @@
-const { User } = require("../models");
+const { User, Game } = require("../models");
 
 class UserController {
   static index(req, res) {
-    User.findAll()
+    User.findAll({
+      order: [["id", "Asc"]],
+    })
       .then((data) => {
+        data.forEach((x) => {
+          x.dontShowEmail();
+        });
         res.render("listUser", { data });
       })
       .catch((err) => {
@@ -19,18 +24,21 @@ class UserController {
     let obj = {
       name: req.body.name,
       username: req.body.username,
-      paasword: req.body.password,
+      password: req.body.password,
       email: req.body.email,
       role: req.body.role,
     };
 
     User.create(obj)
       .then((data) => {
-        console.log(data);
         res.redirect("/users");
       })
       .catch((err) => {
-        res.send(err);
+        let errors = [];
+        err.errors.forEach((x) => {
+          errors.push(x.message);
+        });
+        res.send(errors);
       });
   }
 
@@ -52,9 +60,9 @@ class UserController {
     let obj = {
       name: req.body.name,
       username: req.body.username,
-      paasword: req.body.paasword,
+      password: req.body.password,
       email: req.body.email,
-      role: req.body.role, //kalo ga dipake hapus aja
+      role: req.body.role,
     };
 
     User.update(obj, { where: { id: id } })
@@ -71,6 +79,20 @@ class UserController {
     User.destroy({ where: { id: `${id}` } })
       .then((data) => {
         res.redirect("/users");
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
+  static showOrders(req, res) {
+    const id = +req.params.id;
+
+    User.findByPk(id, {
+      include: Game,
+    })
+      .then((data) => {
+        res.send(data);
       })
       .catch((err) => {
         res.send(err);

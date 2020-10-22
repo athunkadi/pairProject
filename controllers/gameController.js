@@ -1,4 +1,5 @@
 const { Game } = require("../models");
+const Helper = require("../helpers/helper");
 
 class GameController {
   static index(req, res) {
@@ -7,7 +8,7 @@ class GameController {
       order: [["id", "Asc"]],
     })
       .then((data) => {
-        res.render("listGame", { data });
+        res.render("listGame", { data, Helper });
       })
       .catch((err) => {
         res.send(err);
@@ -63,7 +64,6 @@ class GameController {
       stock: req.body.stock,
       image: req.body.image,
       price: req.body.price,
-      //kalo ga dipake jangan lupa dihapus
       serial_code: req.body.serial_code,
     };
 
@@ -78,12 +78,27 @@ class GameController {
 
   static delete(req, res) {
     const id = +req.params.id;
-    Game.destroy({ where: { id: `${id}` } })
+    Game.destroy({ where: { id: id } })
       .then((data) => {
         res.redirect("/games");
       })
       .catch((err) => {
         res.send(err);
+      });
+  }
+
+  static buy(req, res) {
+    const id = +req.params.id;
+    Game.decrement("stock", {
+      where: {
+        id: id,
+      },
+    })
+      .then((data) => {
+        res.redirect("/games");
+      })
+      .catch((err) => {
+        res.send(err.message);
       });
   }
 }

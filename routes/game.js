@@ -7,6 +7,7 @@ routerGame.get("/add", GameController.addForm);
 routerGame.post("/add", GameController.addGame);
 routerGame.get("/:id/edit", GameController.editForm);
 routerGame.post("/:id/edit", GameController.editGame);
-routerGame.post("/:id/delete", GameController.delete);
+routerGame.get("/:id/delete", GameController.delete);
+routerGame.get("/:id/buy", GameController.buy);
 
 module.exports = routerGame;

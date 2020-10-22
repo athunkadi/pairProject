@@ -1,10 +1,17 @@
 <%- include("partials/head", { tittle: "List Users"}); -%>
 <div class="container">
   <h2>List Users</h2>
-  
-  <a href="/users/add" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Add Users</a>
 
-  <table class="table" style="margin-top: 10px;">
+  <a
+    href="/users/add"
+    class="btn btn-primary btn-lg"
+    tabindex="-1"
+    role="button"
+    aria-disabled="true"
+    >Add Users</a
+  >
+
+  <table class="table" style="margin-top: 10px">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -15,20 +22,33 @@
       </tr>
     </thead>
     <!-- looping data -->
-    <%  %>
     <tbody>
+      <% data.forEach((user, index) => { %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= user.name %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
         <td>
-          <a href="/users/<%=  %>/edit" class="btn btn-primary btn-sm" >edit</a> |
-          <a href="/users/<%=  %>/delete" class="btn btn-primary btn-sm" onclick="alert('Konfirmasi menghapus Casts')">delete</a> 
+          <a href="/users/<%= user.id %>/edit" class="btn btn-primary btn-sm"
+            >edit</a
+          >
+          |
+          <a
+            href="/users/<%= user.id %>/delete"
+            class="btn btn-primary btn-sm"
+            onclick="alert('Yakin hapus user ini?')"
+            >delete</a
+          >
+          |
+          <a href="/users/<%= user.id %>/orders" class="btn btn-primary btn-sm"
+            >Order Details</a
+          >
         </td>
       </tr>
+      <% }) %>
     </tbody>
-    <%  %> 
+    <% %>
   </table>
 </div>
 <%- include("partials/foot"); -%>

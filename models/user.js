@@ -3,14 +3,24 @@ const { Model } = require("sequelize");
 const bcrypt = require("bcryptjs");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
       User.hasMany(models.Order);
+    }
+
+    dontShowEmail() {
+      let email = this.email.split("");
+      let position;
+      for (let i = email.length - 1; i >= 0; i--) {
+        if (email[i] === "@") {
+          position = i;
+          break;
+        }
+      }
+      for (let j = 0; j < position; j++) {
+        email[j] = "*";
+      }
+      let emailJoined = email.join("");
+      this.email = emailJoined;
     }
   }
   User.init(
@@ -68,14 +78,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "User",
-      hooks: {
-        beforeCreate(instance, options) {
-          const salt = bcrypt.genSaltSync(8);
-          const hash = bcrypt.hashSync(instance.password, salt);
-
-          instance.password = hash;
-        },
-      },
     }
   );
   return User;

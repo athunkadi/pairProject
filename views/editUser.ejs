@@ -2,31 +2,39 @@
 <div class="container">
   <h2>Add User</h2>
 
-  <form action="/users/add" method="POST">
-    <label for="">Name :</label>
-    <input type="text" name="name" value="<%= data.name %>"><br>
-  
-    <label for="">Username :</label>
-    <input type="text" name="username" value="<%= data.username %>"><br>
+  <form action="/users/<%= data.id %>/edit" method="POST">
+    <label for="name">Name :</label>
+    <input type="text" name="name" value="<%= data.name %>" /><br />
 
-    <label for="">Password :</label>
-    <input type="text" name="password" value="<%= data.password %>"><br>
+    <label for="username">Username :</label>
+    <input type="text" name="username" value="<%= data.username %>" /><br />
 
-    <label for="">email :</label>
-    <input type="email" name="email" value="<%= data.email %>"><br>
+    <label for="password">Password :</label>
+    <input type="text" name="password" value="<%= data.password %>" /><br />
 
+    <label for="email">email :</label>
+    <input type="email" name="email" value="<%= data.email %>" /><br />
 
     <!-- kalo ga di pake apus aja -->
-    <label for="">role :</label>
-    <select name="role" id="">
-      <option value="admin" <%= data.role === 'admin' ? {'selected' : ''} %> >Admin</option>
-      <option value="member" <%= data.role === 'member' ? {'selected' : ''} %> >Member</option>
-    </select><br>
-  
-    <button type="submit" value="submit" class="btn btn-primary btn-sm"> Submit </button>
-    <a href="/users" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">cancel</a>
+    <label for="role">role :</label>
+    <select name="role" id="role">
+      <option value="admin"<%= data.role == 'admin' ? 'selected' : '' %> >Admin</option>
+      <option value="member" <%= data.role == 'member' ? 'selected' : ''%> >Member</option>
+    </select>
+    <br />
 
+    <button type="submit" value="submit" class="btn btn-primary btn-sm">
+      Submit
+    </button>
+    <a
+      href="/users"
+      class="btn btn-primary btn-sm"
+      tabindex="-1"
+      role="button"
+      aria-disabled="true"
+      >cancel</a
+    >
   </form>
 </div>
 
-  <%- include("partials/foot"); -%>
+<%- include("partials/foot"); -%>

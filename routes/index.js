@@ -62,13 +62,7 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      res.send(err.message);
-    } else {
-      res.redirect("/login");
-    }
-  });
+  res.redirect("/login");
 });
 
 router.use("/games", routerGame);

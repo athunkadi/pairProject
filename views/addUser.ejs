@@ -3,30 +3,37 @@
   <h2>Add User</h2>
 
   <form action="/users/add" method="POST">
-    <label for="">Name :</label>
-    <input type="text" name="name"><br>
-  
-    <label for="">Username :</label>
-    <input type="text" name="username"><br>
+    <label for="name">Name :</label>
+    <input type="text" name="name" /><br />
 
-    <label for="">Password :</label>
-    <input type="password" name="password"><br>
+    <label for="username">Username :</label>
+    <input type="text" name="username" /><br />
 
-    <label for="">email :</label>
-    <input type="email" name="email"><br>
+    <label for="password">Password :</label>
+    <input type="password" name="password" /><br />
 
+    <label for="email">email :</label>
+    <input type="email" name="email" /><br />
 
     <!-- kalo ga di pake apus aja -->
-    <label for="">role :</label>
-    <select name="role" id="">
+    <label for="role">role :</label>
+    <select name="role" id="role">
       <option value="admin">Admin</option>
-      <option value="member">Member</option>
-    </select><br>
-  
-    <button type="submit" value="submit" class="btn btn-primary btn-sm"> Submit </button>
-    <a href="/users" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">cancel</a>
+      <option value="member">Member</option></select
+    ><br />
 
+    <button type="submit" value="submit" class="btn btn-primary btn-sm">
+      Submit
+    </button>
+    <a
+      href="/users"
+      class="btn btn-primary btn-sm"
+      tabindex="-1"
+      role="button"
+      aria-disabled="true"
+      >cancel</a
+    >
   </form>
 </div>
 
-  <%- include("partials/foot"); -%>
+<%- include("partials/foot"); -%>
