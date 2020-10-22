@@ -1,0 +1,34 @@
+<%- include("partials/head", { tittle: "List Users"}); -%>
+<div class="container">
+  <h2>List Users</h2>
+  
+  <a href="/users/add" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Add Users</a>
+
+  <table class="table" style="margin-top: 10px;">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Usermane</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <!-- looping data -->
+    <%  %>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <a href="/users/<%=  %>/edit" class="btn btn-primary btn-sm" >edit</a> |
+          <a href="/users/<%=  %>/delete" class="btn btn-primary btn-sm" onclick="alert('Konfirmasi menghapus Casts')">delete</a> 
+        </td>
+      </tr>
+    </tbody>
+    <%  %> 
+  </table>
+</div>
+<%- include("partials/foot"); -%>
