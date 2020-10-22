@@ -4,7 +4,7 @@
     "username": "abraham-sys",
     "password": "brastagi12",
     "email": "notnull@gmail.com",
-    "role": "user"
+    "role": "member"
   },
   {
     "name": "Adi Nugroho",
@@ -18,6 +18,6 @@
     "username": "callmeysf",
     "password": "yestoysf",
     "email": "isequal@gmail.com",
-    "role": "user"
+    "role": "member"
   }
 ]

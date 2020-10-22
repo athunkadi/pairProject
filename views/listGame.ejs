@@ -1,35 +1,53 @@
 <%- include("partials/head", { tittle: "List Games"}); -%>
 <div class="container">
   <h2>List Games</h2>
-  
-  <a href="/games/add" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Add Games</a>
 
-  <table class="table" style="margin-top: 10px;">
+  <a
+    href="/games/add"
+    class="btn btn-primary btn-lg"
+    tabindex="-1"
+    role="button"
+    aria-disabled="true"
+    >Add Games</a
+  >
+
+  <table class="table" style="margin-top: 10px">
     <thead>
       <tr>
+        <th scope="col">Image</th>
         <th scope="col">Game</th>
         <th scope="col">Stock</th>
-        <th scope="col">Image</th>
         <th scope="col">Price</th>
         <th scope="col">Serial Code</th>
         <th scope="col">options</th>
       </tr>
     </thead>
     <!-- looping data -->
-    <%  %>
+    <% %>
     <tbody>
+      <% data.forEach((game, index) => { %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><img src="<%= game.image  %>" alt="" /></td>
+        <td><%= game.name %></td>
+        <td><%= game.stock %></td>
+        <td><%= game.price %></td>
+        <td><%= game.serial_code %></td>
         <td>
-          <a href="/games/<%=  %>/edit" class="btn btn-primary btn-sm" >edit</a> |
-          <a href="/games/<%=  %>/delete" class="btn btn-primary btn-sm" onclick="alert('Konfirmasi menghapus Casts')">delete</a> 
+          <a href="/games/<%= game.id %>/edit" class="btn btn-primary btn-sm"
+            >edit</a
+          >
+          |
+          <a
+            href="/games/<%= game.id %>/delete"
+            class="btn btn-primary btn-sm"
+            onclick="alert('Konfirmasi menghapus Casts')"
+            >delete</a
+          >
         </td>
       </tr>
+      <% }) %>
     </tbody>
-    <%  %> 
+    <% %>
   </table>
 </div>
 <%- include("partials/foot"); -%>

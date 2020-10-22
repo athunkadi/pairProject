@@ -4,25 +4,29 @@
 
   <form action="/games/<%= data.id %> /edit" method="POST">
     <label for="">Name :</label>
-    <input type="text" name="name" value="<%= data.name %>"><br>
+    <input type="text" name="name" value="<%= data.name %>" /><br />
 
     <label for="">Stock :</label>
-    <input type="number" name="stock" value="<%= data.stock %>"><br>
-  
+    <input type="number" name="stock" value="<%= data.stock %>" /><br />
+
     <label for="">image :</label>
-    <input type="text" name="image" value="<%= data.image %>"><br>
+    <input type="text" name="image" value="<%= data.image %>" /><br />
 
     <label for="">Price :</label>
-    <input type="number" name="price" value="<%= data.price %>"><br>
+    <input type="number" name="price" value="<%= data.price %>" /><br />
 
-    <!-- kurang tau nih gw dipake buat inputan atau gimana yang serial code -->
-    <label for="">Serial Code :</label>
-    <input type="text" name="serial_code" value="<%= data.serial_code %>"><p>kurang tau nih gw dipake buat inputan atau gimana yang serial code</p><br>
-  
-    <button type="submit" value="submit" class="btn btn-primary btn-sm"> Submit </button>
-    <a href="/games" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true">cancel</a>
-
+    <button type="submit" value="submit" class="btn btn-primary btn-sm">
+      Submit
+    </button>
+    <a
+      href="/games"
+      class="btn btn-primary btn-sm"
+      tabindex="-1"
+      role="button"
+      aria-disabled="true"
+      >cancel</a
+    >
   </form>
 </div>
 
-  <%- include("partials/foot"); -%>
+<%- include("partials/foot"); -%>

@@ -13,13 +13,7 @@ router.use(
   })
 );
 
-router.use((req, res, next) => {
-  console.log("heelo");
-  next();
-});
-
 const middleBridge = (req, res, next) => {
-  console.log("heeloo");
   next();
 };
 
@@ -68,7 +62,13 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  res.redirect("/login");
+  req.session.destroy((err) => {
+    if (err) {
+      res.send(err.message);
+    } else {
+      res.redirect("/login");
+    }
+  });
 });
 
 router.use("/games", routerGame);

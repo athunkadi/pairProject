@@ -1,53 +1,52 @@
-const { User } = require('../models');
+const { User } = require("../models");
 
 class UserController {
-
-  static index(req, res){
+  static index(req, res) {
     User.findAll()
-      .then(data => {
-        res.render('listUser', { data })
+      .then((data) => {
+        res.render("listUser", { data });
       })
-      .catch(err => {
+      .catch((err) => {
         res.send(err);
-      })
+      });
   }
 
-  static addForm(req, res){
-    res.render('addUser');
+  static addForm(req, res) {
+    res.render("addUser");
   }
 
-  static addUser(req, res){
-    res.send(req.body);
+  static addUser(req, res) {
     let obj = {
       name: req.body.name,
       username: req.body.username,
-      paasword: req.body.paasword,
+      paasword: req.body.password,
       email: req.body.email,
-      role: req.body.role //kalo ga dipake hapus aja
-    }
+      role: req.body.role,
+    };
 
     User.create(obj)
-      .then(data => {
-        res.redirect('/users');
+      .then((data) => {
+        console.log(data);
+        res.redirect("/users");
       })
-      .catch(err => {
+      .catch((err) => {
         res.send(err);
-      })
+      });
   }
 
-  static editForm(req, res){
+  static editForm(req, res) {
     const id = +req.params.id;
 
-    User.findOne({ where: {'id': id}})
-      .then(data => {
-        res.render('editUser', { data });
+    User.findOne({ where: { id: id } })
+      .then((data) => {
+        res.render("editUser", { data });
       })
-      .catch(err => {
+      .catch((err) => {
         res.send(err);
-      })
+      });
   }
 
-  static editUser(req, res){
+  static editUser(req, res) {
     const id = +req.params.id;
 
     let obj = {
@@ -55,29 +54,28 @@ class UserController {
       username: req.body.username,
       paasword: req.body.paasword,
       email: req.body.email,
-      role: req.body.role //kalo ga dipake hapus aja
-    }
+      role: req.body.role, //kalo ga dipake hapus aja
+    };
 
-    User.update(obj, {where : {'id' : id}})
-      .then(data => {
-        res.redirect('/users');
+    User.update(obj, { where: { id: id } })
+      .then((data) => {
+        res.redirect("/users");
       })
-      .catch(err => {
+      .catch((err) => {
         res.send(err);
-      })
-
+      });
   }
 
-  static delete(req, res){
+  static delete(req, res) {
     const id = +req.params.id;
-    User.destroy({where: {'id': `${id}`}})
-    .then(data => {
-      res.redirect('/users');
-    })
-    .catch(err => {
-      res.send(err);
-    })
+    User.destroy({ where: { id: `${id}` } })
+      .then((data) => {
+        res.redirect("/users");
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   }
 }
 
-module.exports = UserController
+module.exports = UserController;
